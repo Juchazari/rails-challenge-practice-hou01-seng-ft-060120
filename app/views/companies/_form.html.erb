@@ -7,20 +7,18 @@
 		<% end %>
 	</ul>
 
-<p>Company Details</p>
+<h3>Company Details</h3>
 	<%= f.label :name %>
 	<%= f.text_field :name %>
 
-<p>Building Floors Available</p>
+<h3>Rent a buildings floor(s)</h3>
 	<% Building.all.each do |b| %>
 		<%= f.fields_for :offices, b do |b_field| %>
 			<%= b_field.hidden_field :id %>
 			<%= b_field.label b.name %>
-			<%= b_field.collection_check_boxes :offices, b.empty_offices, :floor, :floor %>
+			<%= b_field.collection_check_boxes :offices, b.empty_offices, :floor, :floor %><br>
 		<% end %>
 	<% end %>
 	<br>
-
-
 	<%= f.submit %>
 <% end %>

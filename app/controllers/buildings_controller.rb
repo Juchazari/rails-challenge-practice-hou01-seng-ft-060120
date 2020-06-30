@@ -13,7 +13,7 @@ class BuildingsController < ApplicationController
 
     def update
         @building.update(building_params)
-        redirect_to building_path
+        redirect_to building_path(@building)
     end
 
     private
