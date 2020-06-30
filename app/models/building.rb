@@ -2,7 +2,7 @@ class Building < ApplicationRecord
   has_many :offices
   has_many :companies, through: :offices
 
-  validates :name, :address, :country, :rent_per_floor, presence: true
+  validates :country, presence: true
 
   def number_of_floors_available
     # Will not work until relationships and schema are corretly setup
@@ -19,16 +19,7 @@ class Building < ApplicationRecord
   end
 
   def total_rent
-    # total_offices = []
-    # self.offices.each do |office|
-    #   total_offices << office.company.name
-    # end
-    # self.rent_per_floor * total_offices.count
-    self.offices.count * self.rent_per_floor
+    self.rent_per_floor * self.companies.count
   end
-
-  # def available_floors
-  #   self.number_of_floors -
-  # end
 
 end

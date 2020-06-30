@@ -13,16 +13,16 @@ class BuildingsController < ApplicationController
 
     def update
         @building.update(building_params)
-        redirect_to @building
+        redirect_to building_path
     end
 
     private
 
-    def building_params
-        params.require(:building).permit(:name, :address, :country, :rent_per_floor)
-    end
+        def building_params
+            params.require(:building).permit(:name, :country, :address, :rent_per_floor)
+        end
 
-    def find_building
-        @building = Building.find(params[:id])
-    end
+        def find_building
+            @building = Building.find(params[:id])
+        end
 end
