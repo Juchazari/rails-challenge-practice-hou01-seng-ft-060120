@@ -1,0 +1,20 @@
+<h1><%= @building.name %></h1>
+<p>Address: <%= @building.address %></p>
+<p>Country: <%= @building.country %></p>
+<p>Rent Per Floor: $<%= @building.rent_per_floor %></p>
+<p>Number of Floors: <%= @building.number_of_floors %></p>
+
+<ul>
+    <% @building.offices.each do |office| %>
+        <li><%= office.company.name %></li>
+    <% end %>
+</ul>
+
+<p>Total Rent: $<%= @building.total_rent %></p>
+
+<h3>Available Floors</h3>
+<ul>
+<% @building.empty_offices.each do |office| %>
+    <li>Floor: <%= office.floor %></li>
+<% end %>
+</ul>
