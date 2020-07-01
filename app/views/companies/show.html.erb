@@ -1,1 +1,29 @@
 <h1>Company: <%= @company.name %></h1>
+<p><strong>Total Offices:</strong> <%= @company.offices.count %></p>
+
+<% @company.company_office_floors.each do |building, offices| %>
+    <p>Building: <%= building.name %><br>Floors: <%= offices.uniq %></p>
+<% end %>
+
+<!--
+<% @company.offices.each do |office| %>
+    <p>
+        <strong>Building:</strong> <%= office.building.name %><br>
+        <strong>Office location:</strong> <%= office.building.address %><br>
+        <strong>Floor number:</strong> <%= office.floor %>
+    </p>
+<% end %>
+-->
+
+<p><strong>Total rent spendings:</strong> $<%= @company.total_rent_spending %></p>
+<hr>
+<h2>Employees</h2>
+
+<ol>
+    <% @company.employees.each do |employee| %>
+        <li>
+            <%= employee.name %>
+            <!--<%= button_to "Remove", employee, method: :patch, data: { confirm: "Are you sure you want to remove this employee?" } %>-->
+        </li>
+    <% end %>
+</ol>
